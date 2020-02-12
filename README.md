@@ -2,4 +2,9 @@
 
 A simple application for adding school information using Angular and Firebase
 
-**please use npm install before using the application
+Used:
+- boostrap : https://getbootstrap.com/
+- fontawesom for icons: https://fontawesome.com/
+- firebase : https://firebase.google.com/
+
+*please use npm install before using the application*
