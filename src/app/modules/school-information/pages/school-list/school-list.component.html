@@ -1,0 +1,39 @@
+<div>
+    <div class="row">
+        <div class="col-6">
+            <section class="pb-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text bg-white">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <input type="text" class="form-control" name="search" [(ngModel)]="searchText" autocomplete="off"
+                        placeholder="search school by name or address">
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="w-25">School Name</th>
+                <th class="w-40">Address</th>
+                <th class="w-15">Email</th>
+                <th class="w-10">Contact Number</th>
+                <th class="w-10">Student Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let school of schoolList | filter:searchText; let i = index; trackBy:i">
+                <!-- | filter:searchText; let i = index; trackBy:i -->
+                <td>{{school.schoolName}}</td>
+                <td>{{school.street}}, {{school.suburb}}, {{school.postcode}}, {{school.state}}</td>
+                <td>{{school.email}}</td>
+                <td>{{school.phoneNumber}}</td>
+                <td>{{school.registeredCount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

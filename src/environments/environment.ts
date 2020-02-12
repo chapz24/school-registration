@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase : {
+    apiKey: 'AIzaSyCyqphg_UZF_a83AKtVUqgtHfeFSNzjpO4',
+    authDomain: 'schoolregistration-96a41.firebaseapp.com',
+    databaseURL: 'https://schoolregistration-96a41.firebaseio.com',
+    projectId: 'schoolregistration-96a41',
+    storageBucket: 'schoolregistration-96a41.appspot.com',
+    messagingSenderId: '198281511802',
+    appId: '1:198281511802:web:01fab32338785d82798cc3',
+    measurementId: 'G-TN225862SC'
+  }
 };
 
 /*

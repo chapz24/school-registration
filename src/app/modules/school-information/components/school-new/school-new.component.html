@@ -1,0 +1,241 @@
+<div class="modal-header">
+    <h2 class="modal-title atom-header atom-header__h4" id="newSchoolModalLabel">
+        Add New School Information
+    </h2>
+    <div class="close view-alert__close">
+        <a aria-label="Close" (click)="activeModal.dismiss('Cross click')" data-dismiss="modal">
+            <span class="atom-icon atom-icon--darkgray">
+                <i class="fas fa-times-circle"></i>
+            </span>
+        </a>
+    </div>
+</div>
+<div class="modal-body">
+    <form [formGroup]="this.schoolService.form">
+        <input type="hidden" formControlName="$key">
+        <!-- school name -->
+        <div class="row">
+            <div class="col-12">
+                <section class="pb-2" style="margin-left: 2rem; margin-right: 2rem;">
+                    <label name="schoolName" class="col-3 col-form-label" style=" padding-left: 0rem;">School
+                        Name</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-school" [class.green-icon]="formControls.schoolName.valid"
+                                    [class.red-icon]="formControls.schoolName.invalid && formControls.schoolName.errors"></i>
+                            </div>
+                        </div>
+                        <input type="text" formControlName="schoolName" class="form-control" placeholder="school name"
+                            [ngClass]="{'is-invalid': formControls.schoolName.invalid && formControls.schoolName.errors}"
+                            maxlength="200" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.schoolName.invalid && (formControls.schoolName.dirty || formControls.schoolName.touched)">
+                            <p class="error-msg" *ngIf="formControls.schoolName.errors.required">
+                                The School name is required.
+                            </p>
+                            <p class="error-msg" *ngIf="formControls.schoolName.errors.maxlength">
+                                The maximum characters allowed is 200.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- street -->
+        <div class="row">
+            <div class="col-6">
+                <section class="pb-2" style="margin-left: 2rem; margin-right: rem;">
+                    <label name="street" class="col-3 col-form-label" style=" padding-left: 0rem;">Street</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-road" [class.green-icon]="formControls.street.valid"
+                                    [class.red-icon]="formControls.street.invalid && formControls.street.errors"></i>
+                            </div>
+                        </div>
+                        <input type="text" formControlName="street" class="form-control" placeholder="street"
+                            [ngClass]="{'is-invalid': formControls.street.invalid && formControls.street.errors}" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.street.invalid && (formControls.street.dirty || formControls.street.touched)">
+                            The street is required.
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- suburb -->
+            <div class="col-6">
+                <section class="pb-2" style="margin-left: 1rem; margin-right: 2rem;">
+                    <label name="suburb" class="col-3 col-form-label" style=" padding-left: 0rem;">Suburb</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-street-view" [class.green-icon]="formControls.suburb.valid"
+                                    [class.red-icon]="formControls.suburb.invalid && formControls.suburb.errors"></i>
+                            </div>
+                        </div>
+                        <input type="text" formControlName="suburb" class="form-control" placeholder="suburb"
+                            [ngClass]="{'is-invalid': formControls.suburb.invalid && formControls.suburb.errors}" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.suburb.invalid && (formControls.suburb.dirty || formControls.suburb.touched)">
+                            The suburb is required.
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- postcode -->
+            <div class="col-6">
+                <section class="pb-2" style="margin-left: 2rem; margin-right: 1rem;">
+                    <label name="postcode" class="col-5 col-form-label" style=" padding-left: 0rem;">Post Code</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-mail-bulk" [class.green-icon]="formControls.postcode.valid"
+                                    [class.red-icon]="formControls.postcode.invalid && formControls.postcode.errors"></i>
+                            </div>
+                        </div>
+                        <input type="text" formControlName="postcode" class="form-control" placeholder="0000" pattern="[0-9]*"
+                            [ngClass]="{'is-invalid': formControls.postcode.invalid && formControls.postcode.errors}"
+                            minlength="4" maxlength="4" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.postcode.invalid && (formControls.postcode.dirty || formControls.postcode.touched)">
+                            <p class="error-msg" *ngIf="formControls.postcode.errors.required">
+                                The Post code name is required.
+                            </p>
+                            <p class="error-msg" *ngIf="formControls.postcode.errors.minlength">
+                                The Post code must have 4 numbers.
+                            </p>
+                            <p class="error-msg" *ngIf="formControls.postcode.errors.maxlength">
+                                The Post code cannot exceed 4 numbers.
+                            </p>
+                            <p class="error-msg" *ngIf="formControls.postcode.errors.pattern">
+                                The Post code can only be numbers.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- state -->
+            <div class="col-6">
+                <section class="pb-2" style="margin-left: 1rem; margin-right: 2rem;">
+                    <label name="state" class="col-5 col-form-label" style=" padding-left: 0rem;">State</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-flag" [class.green-icon]="formControls.state.valid"
+                                    [class.red-icon]="formControls.state.invalid && formControls.state.errors"></i>
+                            </div>
+                        </div>
+                        <input type="text" formControlName="state" class="form-control" placeholder="state"
+                            [ngClass]="{'is-invalid': formControls.state.invalid && formControls.state.errors}" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.state.invalid && (formControls.state.dirty || formControls.state.touched)">
+                            The state is required.
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Email -->
+        <div class="row">
+            <div class="col-12">
+                <section class="pb-2" style="margin-left: 2rem; margin-right: 2rem;">
+                    <label name="email" class="col-3 col-form-label" style=" padding-left: 0rem;">Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-at" [class.green-icon]="formControls.email.valid"
+                                    [class.red-icon]="formControls.email.invalid && formControls.email.errors"></i>
+                            </div>
+                        </div>
+                        <input type="text" formControlName="email" class="form-control" placeholder="example@abc.com"
+                            [ngClass]="{'is-invalid': formControls.email.invalid && formControls.email.errors}" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.email.invalid && (formControls.email.dirty || formControls.email.touched)">
+                            Invalid email address.
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Phone Number -->
+            <div class="col-6">
+                <section class="pb-2" style="margin-left: 2rem; margin-right: 1rem;">
+                    <label name="phoneNumber" class="col-5 col-form-label" style=" padding-left: 0rem;">Phone
+                        Number</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-phone" [class.green-icon]="formControls.phoneNumber.valid"
+                                    [class.red-icon]="formControls.phoneNumber.invalid && formControls.phoneNumber.errors"></i>
+                            </div>
+                        </div>
+                        <input type="text" formControlName="phoneNumber" class="form-control" placeholder="1234567890" pattern="[0-9]*"
+                            [ngClass]="{'is-invalid': formControls.phoneNumber.invalid && formControls.phoneNumber.errors}"
+                            minlength="10" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.phoneNumber.invalid && (formControls.phoneNumber.dirty || formControls.phoneNumber.touched)">
+                            <p class="error-msg" *ngIf="formControls.phoneNumber.errors.minlength">
+                                The Phone Number should at least contain 10 digits.
+                            </p>
+                            <p class="error-msg" *ngIf="formControls.phoneNumber.errors.pattern">
+                                The Phone Number can only be numbers.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- registeredCount -->
+            <div class="col-6">
+                <section class="pb-2" style="margin-left: 1rem; margin-right: 2rem;">
+                    <label name="registeredCount" class="col-10 col-form-label" style=" padding-left: 0rem;">Number of
+                        students registered</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text bg-white">
+                                <i class="fas fa-user-friends" [class.green-icon]="formControls.registeredCount.valid"
+                                    [class.red-icon]="formControls.registeredCount.invalid && formControls.registeredCount.errors"></i>
+                            </div>
+                        </div>
+                        <input type="number" formControlName="registeredCount" class="form-control" placeholder=""
+                            [ngClass]="{'is-invalid': formControls.registeredCount.invalid && formControls.registeredCount.errors}" />
+                        <div class="invalid-feedback"
+                            *ngIf="formControls.registeredCount.invalid && (formControls.registeredCount.dirty || formControls.registeredCount.touched)">
+                            The Registered Count is required.
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- modal footer -->
+        <div class="modal-footer">
+            <div>
+                <button type="button" class="btn btn-warning" (click)="activeModal.dismiss('Cross click')">
+                    <span class="atom-icon atom-icon--white">
+                        <i class="fas fa-times"></i>
+                    </span>
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-success" style="margin-right: 1rem; margin-left: 1rem;"
+                    [ngClass]="{'atom-btn--disabled': this.schoolService.form.invalid}"
+                    [disabled]="this.schoolService.form.invalid" (click)="Save()" id="save_school_btn">
+                    <span class="atom-icon atom-icon--white">
+                        <i class="far fa-save"></i>
+                    </span>
+                    Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
