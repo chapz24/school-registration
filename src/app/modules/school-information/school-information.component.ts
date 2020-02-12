@@ -9,17 +9,26 @@ import { SchoolNewComponent } from './components/school-new/school-new.component
 })
 export class SchoolInformationComponent implements OnInit {
 
-  constructor(private _modalService: NgbModal) { }
+  public showMessage: boolean;
+  public successMessage = 'School Details saved successfully.';
+  constructor(private modalService: NgbModal) { }
 
   ngOnInit() {
   }
 
   public AddSchool(): void {
-    this._getSchoolDetailComponentModal();
+    this.getSchoolDetailComponentModal().result.then(
+      result => {
+        this.showMessage = true;
+        setTimeout(() => {
+          this.showMessage = false
+        }, 3000);
+      }
+    );
   }
 
-  private _getSchoolDetailComponentModal() {
-    const modalComponent = this._modalService.open(SchoolNewComponent, {
+  private getSchoolDetailComponentModal() {
+    const modalComponent = this.modalService.open(SchoolNewComponent, {
       size: 'lg',
       windowClass: 'view-modal',
       backdrop: 'static',

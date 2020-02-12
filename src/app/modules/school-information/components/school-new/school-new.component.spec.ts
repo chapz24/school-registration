@@ -13,7 +13,6 @@ import { SchoolService } from 'src/app/shared/services/school.service';
 describe('SchoolNewComponent', () => {
   let component: SchoolNewComponent;
   let fixture: ComponentFixture<SchoolNewComponent>;
-  let service: SchoolService;
 
   const schoolInfo: School = {
     $key: '',
@@ -73,9 +72,4 @@ describe('SchoolNewComponent', () => {
     expect(component.Save).toHaveBeenCalledTimes(1);
   });
 
-  fit('it should add record to the school list', () => {
-    component.form.setValue(schoolInfo);
-    fixture.detectChanges();
-
-  });
 });

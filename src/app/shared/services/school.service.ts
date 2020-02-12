@@ -9,8 +9,9 @@ import { School } from '../modals/school';
 })
 export class SchoolService {
   schoolList: AngularFireList<any>;
+
   constructor(
-    private _firebase: AngularFireDatabase
+    private firebase: AngularFireDatabase
   ) {}
 
   form = new FormGroup({
@@ -32,7 +33,7 @@ export class SchoolService {
   });
 
   public getSchools() {
-    this.schoolList = this._firebase.list('schools');
+    this.schoolList = this.firebase.list('schools');
     return this.schoolList.snapshotChanges();
   }
 
@@ -47,9 +48,6 @@ export class SchoolService {
         email: school.email,
         phoneNumber: school.phoneNumber,
         registeredCount: school.registeredCount
-      })
-      .then(res => {
-        // this._notificationService.CreateSuccess('School Added Successfully.');
       })
       .catch(error => {
         this.errorMgmt(error);

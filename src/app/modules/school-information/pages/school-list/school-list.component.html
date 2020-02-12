@@ -25,14 +25,13 @@
                 <th class="w-10">Student Count</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
             <tr *ngFor="let school of schoolList | filter:searchText; let i = index; trackBy:i">
-                <!-- | filter:searchText; let i = index; trackBy:i -->
                 <td>{{school.schoolName}}</td>
                 <td>{{school.street}}, {{school.suburb}}, {{school.postcode}}, {{school.state}}</td>
                 <td>{{school.email}}</td>
                 <td>{{school.phoneNumber}}</td>
-                <td>{{school.registeredCount}}</td>
+                <td class="col-count">{{school.registeredCount}}</td>
             </tr>
         </tbody>
     </table>

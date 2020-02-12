@@ -16,7 +16,6 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 describe('SchoolListComponent', () => {
   let component: SchoolListComponent;
   let fixture: ComponentFixture<SchoolListComponent>;
-  // let service: SchoolService;
 
   let componentNew: SchoolNewComponent;
   let fixtureNew: ComponentFixture<SchoolNewComponent>;

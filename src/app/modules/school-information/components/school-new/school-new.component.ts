@@ -28,21 +28,13 @@ export class SchoolNewComponent implements OnInit {
       if (this.schoolService.form.get('$key').value == null) {
         // insert new school information
         this.schoolService
-          .insertSchool(this.schoolService.form.value)
-          .then(res => {
-            // success message
-            this._saveSuccess('School Added Successfully.');
-          });
+          .insertSchool(this.schoolService.form.value);
       } else {
         // update existing school information
       }
+      this._resetValues();
+      this.activeModal.close();
     }
-  }
-
-  private _saveSuccess(response): void {
-    // this.notificationService.CreateSuccess('School Information Added Successfully.');
-    this._resetValues();
-    this.activeModal.close();
   }
 
   private _resetValues() {

@@ -4,12 +4,9 @@ import { SchoolService } from './school.service';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabase } from '@angular/fire/database';
-// import { Observable } from 'rxjs';
 import { of } from 'rxjs/internal/Observable/of';
 import { School } from '../modals/school';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-// import { Observable } from 'rxjs/internal/Observable';
-
 
 const schoolList = [
   {
@@ -48,10 +45,8 @@ const schoolList = [
 ];
 
 const angularFireDatabaseStub = { list: () => of (schoolList) };
-// let mockSchools$ = Observable.(schoolList);
 
 describe('SchoolService', () => {
-  // spyOn(angularFireDatabaseStub, 'list').and.returnValue(mockSchools$);
   beforeEach(() =>
     TestBed.configureTestingModule({
       imports: [AngularFireModule.initializeApp(environment.firebase)],
@@ -72,9 +67,4 @@ describe('SchoolService', () => {
       expect(school[0]).toEqual(jasmine.any(School));
     });
   }));
-
-  it('saves school information to the db', () => {
-
-  });
-
 });
